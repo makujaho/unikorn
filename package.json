@@ -1,3 +1,27 @@
 {
-    "main": "index.html"
+  "main": "index.html",
+  "author": "Maik Kulbe",
+  "name": "unikorn",
+  "description": "Twitter client built with node-webkit",
+  "version": "0.0.0",
+  "keywords": ["twitter"],
+  "window": {
+      "icon": "icons/main.png",
+      "toolbar": false,
+      "width": 300,
+      "height": 200
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mkzero/unikorn.git"
+  },
+  "dependencies": {
+    "ntwitter": "*",
+    "twitter-bootstrap-node": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
 }

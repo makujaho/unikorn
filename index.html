@@ -7,7 +7,6 @@
 
         <link rel="stylesheet" href="css/main.css">
 
-        <script src="config.js"></script>
         <script src="main.js"></script>
     </head>
     <body>
@@ -25,9 +24,15 @@
     </body>
 
     <script>
+        var config  = require('config');
+
         Array.prototype.slice.call(document.getElementsByClassName('appname'))
         .forEach(function(e) {
             e.innerHTML = config.appname;
         });
+
+        // Server setup
+        var app = require('./app');
+
     </script>
 </html>
