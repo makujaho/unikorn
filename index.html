@@ -2,37 +2,25 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <meta name="viewport" content="width=device-width">
-
-        <link rel="stylesheet" href="css/main.css">
+        <title class="appname"></title>
 
         <script src="main.js"></script>
     </head>
     <body>
-        <header>
-            <h1 class="appname"></h1>
-        </header>
-
-        <div id="main">
-
-        </div>
-
-        <footer>
-
-        </footer>
+        <iframe id="app-content" src=""></iframe>
     </body>
 
     <script>
-        var config  = require('config');
+        var config  = require('./config');
 
         Array.prototype.slice.call(document.getElementsByClassName('appname'))
-        .forEach(function(e) {
-            e.innerHTML = config.appname;
-        });
+            .forEach(function(e) {
+                e.innerHTML = config.appname;
+            });
 
         // Server setup
         var app = require('./app');
+        document.getElementById('app-content').src = 'localhost:3000';
 
     </script>
 </html>

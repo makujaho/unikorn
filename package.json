@@ -8,8 +8,8 @@
   "window": {
       "icon": "icons/main.png",
       "toolbar": false,
-      "width": 300,
-      "height": 200
+      "width": 400,
+      "height": 600
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "ntwitter": "*",
-    "twitter-bootstrap-node": "*"
+    "twitter-bootstrap-node": "*",
+    "express": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
