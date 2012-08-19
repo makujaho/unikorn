@@ -16,7 +16,7 @@ will be removed from this file and inserted into FEATURES.md
 2. Feature requests
 -------------------
 
-* Multi-column layout
+* Multi-column layout with adjustable column-size
 * Single-column layout
 * Column views
     * User timeline
@@ -26,6 +26,7 @@ will be removed from this file and inserted into FEATURES.md
         * Tweet retweeted
         * New follower
         * Unfollow
+    * Mixed mentions and notificatiosn (aka "Interactions")
     * User profiles
     * Custom search
 * In-line embedded media
