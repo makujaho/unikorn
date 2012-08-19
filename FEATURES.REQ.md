@@ -29,4 +29,16 @@ will be removed from this file and inserted into FEATURES.md
     * Mixed mentions and notificatiosn (aka "Interactions")
     * User profiles
     * Custom search
-* In-line embedded media
+    * Conversation
+* Tweets
+    * In-line conversations
+    * In-line embedded media
+    * Quote/RT
+    * Fav
+    * Archive
+    * Content
+        * Author name
+        * Author alias
+        * Tweet text
+        * Tweet time
+        * Client name
