@@ -7,9 +7,7 @@
   "keywords": ["twitter"],
   "window": {
       "icon": "icons/main.png",
-      "toolbar": false,
-      "width": 400,
-      "height": 600
+      "toolbar": true
   },
   "repository": {
     "type": "git",

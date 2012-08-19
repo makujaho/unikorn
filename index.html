@@ -6,21 +6,30 @@
 
         <script src="main.js"></script>
     </head>
-    <body>
-        <iframe id="app-content" src=""></iframe>
-    </body>
+    <body style="width: 100%; height: 100%">
+        <iframe id="app-content" 
+                src="" 
+                frameborder="0" 
+                style="width: 100%;height: 100%;">
+        </iframe>
 
-    <script>
-        var config  = require('./config');
+        <script>
+            var config  = require('./config');
 
-        Array.prototype.slice.call(document.getElementsByClassName('appname'))
-            .forEach(function(e) {
-                e.innerHTML = config.appname;
-            });
+            Array.prototype.slice.call(document.getElementsByClassName('appname'))
+                .forEach(function(e) {
+                    e.innerHTML = config.appname;
+                });
 
-        // Server setup
-        var app = require('./app');
-        document.getElementById('app-content').src = 'localhost:3000';
+            // Server setup
+            var app = require('./app');
+            var initFrame = function () {
+                document.getElementById('app-content').src = 'http://localhost:3000';
+            }
+        
+            setTimeout(initFrame,1000);
 
-    </script>
+        </script>
+    
+    </body>>
 </html>

@@ -2,18 +2,18 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      a.brand(href="#")= title
       .nav-collapse
         ul.nav
           li.active
-            a(href="#") Home
+            a(href="#")#settings-btn Settings 
           li
-            a(href="#about") About
+            a(href="#")#bugreport-btn Report bug
           li
-            a(href="#contact") Contact
+            a(href="#")#close-btn Close
 .container
   .hero-unit
-    h1 Hello, World!
-    p This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-    p
-      a.btn.btn-primary.btn-large(href="#") Lean more >>
+    h1 Unikorn
+    div#main
+      div#timeline 
+        span.column-header Timeline
+        a.btn.btn-primary.btn-large(href="#") Btn
