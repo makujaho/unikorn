@@ -4,7 +4,9 @@
     .container
       .nav-collapse
         ul.nav
-          li.active
+          li
+            a(href="#new-tweet-modal", data-toggle="modal")#new-tweet-btn New Tweet
+          li
             a(href="#")#settings-btn Settings 
           li
             a(href="#")#bugreport-btn Report bug
@@ -17,3 +19,19 @@
       div#timeline 
         span.column-header Timeline
         a.btn.btn-primary.btn-large(href="#") Btn
+
+div.modal.hide#new-tweet-modal
+    div.modal-header
+        button(type="button", data-dismiss="modal") x
+        h3 Compose
+    div.modal-body
+        textarea
+    div.modal-footer
+        a(href="#", data-dismiss="modal").btn Close
+        a(href="#").btn.btn-primary Save
+
+script(src="/js/main.js")
+script(src="/js/bootstrap-button.js")
+script(src="/js/bootstrap-collapse.js")
+script(src="/js/bootstrap-modal.js")
+script(src="/js/bootstrap-tooltip.js")
