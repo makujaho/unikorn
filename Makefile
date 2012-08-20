@@ -1,6 +1,7 @@
 all: install
 
 install:
+	./check_nw_install
 	npm install express@2.5.11
 	npm install jade
 	npm install less

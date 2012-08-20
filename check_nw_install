@@ -1,0 +1,98 @@
+#!/bin/bash
+##############################################################################
+#                                                                            #
+# File to check if node-webkit is installed. This is only needed for         #
+# development, as the final release package is a concatenated version of the #
+# node-webkit binary and the app itself.                                     #
+#                                                                            #
+##############################################################################
+
+CHECK_WICH=$(which nw)
+if [ ! -z $CHECK_NW ] || [ -f ~/bin/nw ];
+then
+    echo "node-webkit installed"
+    exit 0
+fi
+
+echo "node-webkit not installed."
+
+
+# Determine OS type
+case $OSTYPE in
+    linux-*)
+        # All linux systems
+        echo "Detected linux system"
+        OS="linux"
+        FT=".tar.gz"
+        ;;
+    darwin*)
+        # All MacOS X releases
+        echo "Detected Mac OS X system"
+        OS="mac"
+        FT=".zip"
+        ;;
+    cygwin)
+        # Cygwin / Windows
+        echo "Detected Cygwin / Windows OS"
+        OS="win32"
+        FT=".zip"
+        ;;
+    *)
+        echo "Unsupported OS"
+        exit 255
+        ;;
+esac
+
+ARCH_APPEND=""
+# Only linux gets a different package for 64-bit architecture
+if [ $OS == "linux" ]
+then
+    ARCH=$(uname -i)
+    case $ARCH in
+        x86_64)
+            # 64-bit architecture
+            echo "Detected 64-bit processor architecture"
+            ARCH_APPEND="_x64"
+            ;;
+        *86)
+            # 32-bit architecture
+            echo "Detected 32-bit processor architecture"
+            ARCH_APPEND="_x32"
+            ;;
+        *)
+            echo "Unsupported architecture"
+            exit 255
+            ;;
+    esac
+fi
+
+NW_DL_PATH="/tmp/nw${FT}"
+DL_NAME="http://s3.amazonaws.com/node-webkit/nw_release_${OS}${ARCH_APPEND}${FT}"
+
+echo "Getting node-webkit binary for $ARCH and $OSTYPE"
+wget -O ${NW_DL_PATH} ${DL_NAME} \
+    || $(echo "Could not retrieve node-webkit binary"; exit 255)
+
+if [ ! -d ~/bin/ ]
+then
+    echo "No bin-directory in home folder, creating it"
+    mkdir ~/bin
+fi
+
+if [ $FT == ".zip" ]
+then
+    unzip $NW_DL_PATH -d ~/bin/
+elif [ $FT == ".tar.gz" ]
+then
+    tar xfz $NW_DL_PATH -C ~/bin/
+fi
+
+rm $NW_DL_PATH
+
+echo "node-webkit installed.";echo;echo;
+echo "IMPORTANT: If ~/bin/ is not already in your PATH please add it, so you "
+echo "can use the nw command without providing the path to the binary."
+echo;echo;
+echo "Press [ENTER] to continue."
+
+read 
