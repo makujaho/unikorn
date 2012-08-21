@@ -1,0 +1,11 @@
+#!/bin/bash
+
+test -e node.dep || exit
+
+for i in $(cat node.dep)
+do
+    if [ $(npm list | grep "$i" | wc -l) -lt 1 ]
+    then
+        npm install "$i"
+    fi
+done

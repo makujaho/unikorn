@@ -7,8 +7,10 @@
 #                                                                            #
 ##############################################################################
 
+test "." != "$(dirname $0)" && pushd $(dirname $0)
+
 CHECK_WICH=$(which nw)
-if [ ! -z $CHECK_NW ] || [ -f ~/bin/nw ];
+if [ ! -z $CHECK_NW ] || [ -f ./bin/nw ];
 then
     echo "node-webkit installed"
     exit 0
@@ -73,21 +75,24 @@ echo "Getting node-webkit binary for $ARCH and $OSTYPE"
 wget -O ${NW_DL_PATH} ${DL_NAME} \
     || $(echo "Could not retrieve node-webkit binary"; exit 255)
 
-if [ ! -d ~/bin/ ]
+if [ ! -d ./bin/ ]
 then
     echo "No bin-directory in home folder, creating it"
-    mkdir ~/bin
+    mkdir ./bin
 fi
 
 if [ $FT == ".zip" ]
 then
-    unzip $NW_DL_PATH -d ~/bin/
+    unzip $NW_DL_PATH -d ./bin/
 elif [ $FT == ".tar.gz" ]
 then
-    tar xfz $NW_DL_PATH -C ~/bin/
+    tar xfz $NW_DL_PATH -C ./bin/
 fi
 
 rm $NW_DL_PATH
+mv ./bin/nw_release_${OS}${ARCH_APPEND}/* ./bin/
+rmdir ./bin/nw_release_${OS}${ARCH_APPEND}
+
 
 echo "node-webkit installed.";echo;echo;
 echo "IMPORTANT: If ~/bin/ is not already in your PATH please add it, so you "
@@ -95,4 +100,5 @@ echo "can use the nw command without providing the path to the binary."
 echo;echo;
 echo "Press [ENTER] to continue."
 
-read 
+read
+test -z $pushed || popd
