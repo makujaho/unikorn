@@ -42,6 +42,7 @@ will be removed from this file and inserted into FEATURES.md
         * Tweet text
         * Tweet time
         * Client name
+    * In-line long-tweets (tl.gd/TwitLonger, Hotot)
 * Keyboard commands
     * Normal style
     * Vim-style
