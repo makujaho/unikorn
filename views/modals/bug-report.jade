@@ -1,0 +1,15 @@
+div.modal.hide#bug-report-modal
+    div.modal-header
+        button(type="button", data-dismiss="modal") x
+        h3 Report a bug
+    div.modal-body#bug-report-body
+        p Sadly, you can't report bugs yet, this form is just a dummy.
+        div#bug-report-titel
+            label Title
+            input(type="text", name="bug-report-description")
+        div#bug-report-body
+            label Description
+            textarea(name="bug-report-description")
+    div.modal-footer
+        a(href="#", data-dismiss="modal").btn Close
+        a(href="#").btn.btn-primary Send

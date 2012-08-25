@@ -20,15 +20,9 @@
         span.column-header Timeline
         a.btn.btn-primary.btn-large(href="#") Btn
 
-div.modal.hide#new-tweet-modal
-    div.modal-header
-        button(type="button", data-dismiss="modal") x
-        h3 Compose
-    div.modal-body
-        textarea
-    div.modal-footer
-        a(href="#", data-dismiss="modal").btn Close
-        a(href="#").btn.btn-primary Save
+include modals/new-tweet
+include modals/settings
+include modals/bug-report
 
 script(src="/js/main.js")
 script(src="/js/bootstrap-button.js")

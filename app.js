@@ -4,9 +4,16 @@
  */
 
 var express = require('express'),
-    routes  = require('./routes');
+    routes  = require('./routes'),
+    fs      = require('fs');
+
+// if on node 0.6, this is necessary for compat
+fs.exists     = fs.exists     || require('path').exists;
+fs.existsSync = fs.existsSync || require('path').existsSync;
 
 var app = module.exports = express.createServer();
+
+var configFile = __dirname + '/config.json';
 
 // Now less files with @import 'whatever.less' will work
 // (https://github.com/senchalabs/connect/pull/174
@@ -54,4 +61,26 @@ app.listen(3000, function(){
         app.address().port,
         app.settings.env
     );
+
+    fs.exists(configFile, function(e) {
+        if(e === true) {
+            console.log(configFile + ' exists');
+        } else {
+            console.log(configFile + ' does not exist');
+            var newConfig = {
+                twitter: {
+                    access_token_key: '',
+                    access_token_secret: ''
+                }
+            };
+
+            fs.writeFile(configFile, JSON.stringify(newConfig), function(err){
+                if(err) {
+                    console.log("Could not write new config file");
+                } else {
+                    console.log("Saved new config file");
+                }
+            });
+        }
+    });
 });

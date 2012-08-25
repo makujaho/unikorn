@@ -46,4 +46,4 @@ will be removed from this file and inserted into FEATURES.md
 * Keyboard commands
     * Normal style
     * Vim-style
-
+* Changes from standard configuration should be saved to a file
